@@ -1499,6 +1499,7 @@ async function main() {
   Logger.log('===================================================');
 
   // Verificar existencia del archivo .env (crítico para la configuración)
+  /* <--- INICIO DEL CÓDIGO COMENTADO O ELIMINADO ---
   if (!fs.existsSync('.env')) {
     Logger.error('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
     Logger.error('!!  ARCHIVO .env NO ENCONTRADO EN LA RAÍZ DEL PROYECTO     !!');
@@ -1516,6 +1517,11 @@ async function main() {
   } else {
     Logger.log("Archivo .env encontrado. Procediendo con la inicialización...");
   }
+  --- FIN DEL CÓDIGO COMENTADO O ELIMINADO ---> */
+
+  // Simplemente confiamos en que dotenv lo intente y que Railway provea las variables
+  Logger.log("Intentando cargar variables de entorno (si .env existe localmente)...");
+  // require('dotenv').config(); // Ya está al inicio del archivo, no hace falta aquí de nuevo.
 
   // Crear e iniciar la instancia del bot
   try {
@@ -1527,6 +1533,7 @@ async function main() {
     process.exit(1);
   }
 }
+
 
 // --- Manejo de Señales del Sistema para Cierre Limpio ---
 const handleShutdown = (signal) => {
