@@ -1076,7 +1076,7 @@ Desarrollado por <a href="https://artefactofilms.com/">Artefacto [Jorge Caballer
 
       // Enviar el archivo de audio como mensaje de voz
       // Usar fs.createReadStream para eficiencia con archivos grandes
-      await ctx.replyWithVoice({ source: fs.createReadStream(audioFilePath) });
+      await ctx.replyWithAudio({ source: fs.createReadStream(audioFilePath) });
       Logger.log(`Handler: /t2v Mensaje de voz enviado con éxito a usuario ${userId}`);
 
       // Eliminar el mensaje de "cargando" si se envió
@@ -1386,7 +1386,7 @@ Desarrollado por <a href="https://artefactofilms.com/">Artefacto [Jorge Caballer
       Logger.log(`processVoiceTransformation: Intentando enviar archivo de voz transformado: ${transformedFilePath}`);
 
       // Enviar como mensaje de voz usando un stream
-      await ctx.replyWithVoice({ source: fs.createReadStream(transformedFilePath) });
+      await ctx.replyWithAudio({ source: fs.createReadStream(transformedFilePath) });
       Logger.log(`processVoiceTransformation: Mensaje de voz transformado (V2V) enviado con éxito a ${userId}`);
 
       // Eliminar el mensaje de "cargando"
