@@ -845,8 +845,8 @@ class JavierBot {
     Logger.log("JavierBot.setupCommands: Configurando comandos...");
     this.bot.command(['start', 'help'], this.handleHelp.bind(this)); // Comando de ayuda
     this.bot.command('t', this.handleTextCommand.bind(this));         // Comando para procesar con GPT y responder texto
-    this.bot.command('t2v', this.handleTextToVoiceCommand.bind(this));// Comando para convertir texto a voz directamente
-    this.bot.command('v2v', this.handleVoiceToVoiceCommand.bind(this));// Comando para iniciar transformación de voz a voz
+    this.bot.command('tv', this.handleTextToVoiceCommand.bind(this));// Comando para convertir texto a voz directamente
+    this.bot.command('vv', this.handleVoiceToVoiceCommand.bind(this));// Comando para iniciar transformación de voz a voz
     this.bot.command('reset', this.handleResetConversation.bind(this));// Comando para reiniciar historial GPT
     // Aquí se podrían añadir comandos solo para administradores en el futuro
     // this.bot.command('admincmd', this.handleAdminCommand.bind(this));
@@ -908,21 +908,21 @@ Puedes conversar conmigo como si estuvieras hablando con Javier Soto.
 
 Comandos:
 /t mensaje - Procesa el mensaje con GPT y responde con texto (si GPT está habilitado).
-/t2v [opciones] "mensaje" - Convierte el mensaje directamente a voz.
+/tv [opciones] "mensaje" - Convierte el mensaje directamente a voz.
    Opciones (opcionales):
     <code>-s valor</code> : Estabilidad (0.0 a 1.0, +estable vs +expresivo, default: ${CONFIG.ELEVEN_LABS.STABILITY})
     <code>-x valor</code> : Exageración Estilo (>= 0.0, default: ${CONFIG.ELEVEN_LABS.STYLE})
     <code>-v valor</code> : Velocidad (0.7 a 1.2, default: ${CONFIG.ELEVEN_LABS.SPEED})
-    <i>Ejemplo:</i> <code>/t2v -s 0.4 -v 1.1 "Este es un mensaje de prueba."</code>
-/v2v - Pide un mensaje de voz/audio para transformarlo a la voz de Javier. Envía el audio después de usar este comando.
+    <i>Ejemplo:</i> <code>/tv -s 0.4 -v 1.1 "Este es un mensaje de prueba."</code>
+/vv - Pide un mensaje de voz/audio para transformarlo a la voz de Javier. Envía el audio después de usar este comando.
 /reset - Reinicia tu conversación actual con GPT.
 /help - Mostrar esta ayuda.
 
-Consejos para ElevenLabs (/t2v):
+Consejos para ElevenLabs (/tv):
 • Añade pausas naturales con puntos suspensivos (...)
 • Usa expresiones como "Mmm...", "Eh..." para sonar más natural.
 • Usa tags para pausas: <code><break /></code> (corta) o <code><break time="Xs"/></code> (X segundos).
-    <i>Ejemplo de texto para /t2v:</i> <code>"Hola <break time="0.7s"/> ¿cómo estás? <break /> Espero que bien."</code>
+    <i>Ejemplo de texto para /tv:</i> <code>"Hola <break time="0.7s"/> ¿cómo estás? <break /> Espero que bien."</code>
 
 Simplemente escribe un mensaje para hablar conmigo (usará GPT si está habilitado).
 
